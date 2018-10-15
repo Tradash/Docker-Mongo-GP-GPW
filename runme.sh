@@ -1,4 +1,6 @@
 #!/bin/bash
+docker-compose stop
+docker-compose rm
 docker stop $(docker ps -f "name=tradash-")
 docker rm $(docker ps -f "name=tradash-")
 docker rmi -f $(docker images "*tradash-*" -q)
