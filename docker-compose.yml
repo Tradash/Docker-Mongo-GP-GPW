@@ -1,0 +1,24 @@
+version: "2"
+services:
+  tradash-gp:
+    container_name: tradash-gp
+    restart: always
+    build: ./gp
+    ports:
+      - "3000:3000"
+    links:
+      - tradash-mongo
+  tradash-gpw:
+    container_name: tradash-gpw
+    restart: always
+    build: ./gpw
+    ports:
+      - "3001:3001"
+      - "4200:4200"
+    links:
+      - tradash-mongo
+  tradash-mongo:
+    container_name: tradash-mongo
+    image: mongo
+    ports:
+      - "27017:27017"
